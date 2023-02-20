@@ -23,4 +23,47 @@ public class Calificaciones {
 	@ManyToOne
 	private Alumnos alumno;
 	
+	public Calificaciones() {
+		super();
+	}
+
+	public Calificaciones(long id, String calificacion, Materias materia, Alumnos alumno) {
+		super();
+		this.id = id;
+		this.calificacion = calificacion;
+		this.materia = materia;
+		this.alumno = alumno;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getCalificacion() {
+		return calificacion;
+	}
+
+	public void setCalificacion(String calificacion) {
+		this.calificacion = calificacion;
+	}
+
+	public Materias getMateria() {
+		return materia;
+	}
+
+	public void setMateria(Materias materia) {
+		this.materia = materia;
+	}
+
+	public Alumnos getAlumno() {
+		return alumno;
+	}
+
+	public void setAlumno(Alumnos alumno) {
+		this.alumno = alumno;
+	}
 }

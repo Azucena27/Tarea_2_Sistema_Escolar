@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns=:th="http://thymeleaf.org"
+	th:replace="~{layouts/main-layout :: main-fragment(
+		~{::title},
+		~{::#customers-static-resources},
+		~{::#customers-header},
+		~{::#customers-nav},
+		~{::#customers-main-content},
+		~{::#customers-footer}
+	)}"
+>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Title of customers page</title>
+		<th:block id="customers-static-resources">
+			<link rel="stylesheet" type="text/css" th:ref="@{/css/main.css}" href="/css/main.css">		
+		</th:block>
+	</head>
+	
+	<body>
+		<div id="customers-header">
+			Header of Customers Page
+		</div>
+		<div id="customers-nav" th:replace="~{/fragments/app-fragments :: nav-default}">
+			Customers Nav			
+		</div>
+		<div id="customers-main-content" >
+			<div th:switch="${customers}">
+				<div class="row">
+					<div>
+						<h2 th:case="null">No customers</h2>
+						<div th:case="*">
+							<h2>Customers</h2>
+							<table border="1">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Surname</th>
+										<th>Email</th>
+										<th>Edit</th>
+										<th>Delete</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="customer : ${customers}">
+										<td th:text="${customer.name}"></td>
+										<td th:text="${customer.surname}"></td>
+										<td th:text="${customer.email}"></td>
+										<td>
+											<a th:href="@{/edit/{id}(id=${customer.id})}">
+												EDIT
+											</a>
+										</td>
+										<td>
+											<a th:href="@{/delete/{id}(id=${customer.id})}">
+												DELETE
+											</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<p>
+							<a th:href="@{/new}">Add Customer</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div id="customers-footer" th:replace="~{/fragments/app-fragments :: copyright}">
+			Footer
+			
+		</div>
+	</body>
+</html>

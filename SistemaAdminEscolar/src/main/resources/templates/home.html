@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns=:th="http://thymeleaf.org"
+	th:replace="~{layouts/main-layout :: main-fragment(
+		~{::title},
+		~{::#home-static-resources},
+		~{::#home-header},
+		~{::#home-nav},
+		~{::#home-main-content},
+		~{::#home-footer}
+	)}"
+>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Home</title>
+		<th:block id="home-static-resources">
+			<link rel="stylesheet" type="text/css" th:ref="@{/css/main.css}" href="/css/main.css">		
+		</th:block>
+	</head>
+	
+	<body>
+		<div id="home-header">
+			Header of Home Page
+		</div>
+		<div id="home-nav" th:replace="~{/fragments/app-fragments :: nav-default}">
+			Home Nav			
+		</div>
+		<div id="home-main-content" >
+			<h2>Home content</h2>
+			<div>This is the content of the Home Page</div>
+		</div>
+		<div id="home-footer" th:replace="~{/fragments/app-fragments :: copyright}">
+			Footer
+			
+		</div>
+	</body>
+</html>
